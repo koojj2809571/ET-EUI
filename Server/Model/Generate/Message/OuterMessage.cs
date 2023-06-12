@@ -493,4 +493,22 @@ namespace ET
 
 	}
 
+	[Message(OuterOpcode.C2R_SayHello)]
+	[ProtoContract]
+	public partial class C2R_SayHello: Object, IMessage
+	{
+		[ProtoMember(1)]
+		public int Count { get; set; }
+
+		[ProtoMember(2)]
+		public string Content { get; set; }
+
+		[ProtoMember(3)]
+		public List<long> keys = new List<long>();
+
+		[ProtoMember(4)]
+		public List<string> values = new List<string>();
+
+	}
+
 }

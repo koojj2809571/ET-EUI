@@ -239,3 +239,10 @@ message M2C_TransferMap // IActorLocationResponse
 	string Message = 92;
 }
  
+message C2R_SayHello // IMessage
+{
+	int32 Count = 1;
+	string Content = 2;
+	repeated int64 keys = 3;
+	repeated string values = 4;
+}

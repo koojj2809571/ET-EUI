@@ -1,3 +1,6 @@
+using System.Diagnostics;
+using ET.EventType;
+
 namespace ET
 {
     public static class SceneFactory
@@ -11,7 +14,14 @@ namespace ET
             zoneScene.AddComponent<ObjectWait>();
             zoneScene.AddComponent<PlayerComponent>();
             
-            Game.EventSystem.Publish(new EventType.AfterCreateZoneScene() {ZoneScene = zoneScene});
+            Game.EventSystem.Publish(new AfterCreateZoneScene() {ZoneScene = zoneScene});
+            Log.Debug("Before TestEvent Punlish");
+            Game.EventSystem.Publish(new TestEvent(){ZoneScene = zoneScene});
+            Game.EventSystem.PublishAsync(new TestEventAsync(){ZoneScene = zoneScene}).Coroutine();
+            Log.Debug("After TestEvent Punlish");
+
+            TestEventClass.Instance.ZoneScene = zoneScene;
+            Game.EventSystem.PublishClass(TestEventClass.Instance);
             return zoneScene;
         }
         

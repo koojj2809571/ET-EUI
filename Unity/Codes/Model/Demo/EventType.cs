@@ -108,5 +108,29 @@ namespace ET
         {
             public Unit Unit;
         }
+
+        public struct TestEvent
+        {
+            public Scene ZoneScene;
+        }
+
+        public struct TestEventAsync
+        {
+            public Scene ZoneScene;
+        }
+
+        public class TestEventClass: DisposeObject
+        {
+            public static readonly TestEventClass Instance = new();
+
+            public Scene ZoneScene;
+
+            public override void Dispose()
+            {
+                base.Dispose();
+
+                this.ZoneScene = null;
+            }
+        }
     }
 }
